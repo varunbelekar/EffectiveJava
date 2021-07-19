@@ -1,5 +1,7 @@
 package com.varun.creatingobjects.staticfactory;
 
+import java.time.Instant;
+
 public class Person {
 	private int id;
 	private String firstName;
@@ -39,6 +41,11 @@ public class Person {
 	}
 	
 	public static Person createPerson(int id, String firstName, String lastName, String country) {
+		return new Person(id, firstName, lastName, country);
+	}
+	
+	public static Person createPersonWithLoggedInstantiationTime(int id, String firstName, String lastName, String country) {
+		System.out.println("Person created at : " + Instant.now());
 		return new Person(id, firstName, lastName, country);
 	}
 	

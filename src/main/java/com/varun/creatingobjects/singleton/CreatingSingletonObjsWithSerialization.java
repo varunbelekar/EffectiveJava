@@ -12,7 +12,7 @@ public class CreatingSingletonObjsWithSerialization {
 		obj1.setValue(1);
 		
 		//Serialize
-		try (FileOutputStream fos = new FileOutputStream("/home/varun/testfiles/out.ser");
+		try (FileOutputStream fos = new FileOutputStream("/home/varun/testfiles/out.txt");
 				ObjectOutputStream out = new ObjectOutputStream(fos)){
 			out.writeObject(obj1);
 		} catch (IOException e) {
@@ -23,7 +23,7 @@ public class CreatingSingletonObjsWithSerialization {
 		
 		//Deserialize
 		SingletonLazy obj2 = null;
-		try(FileInputStream is = new FileInputStream("/home/varun/testfiles/out.ser");
+		try(FileInputStream is = new FileInputStream("/home/varun/testfiles/out.txt");
 				ObjectInputStream ois = new ObjectInputStream(is)) {
 			obj2 = (SingletonLazy)ois.readObject();
 		} catch (Exception e) {

@@ -1,5 +1,8 @@
 package com.varun.commonmethods.equals;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class PhoneNumber {
 	private int areaCode;
 	private int prefix;
@@ -12,18 +15,48 @@ public class PhoneNumber {
 	}
 	
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + areaCode;
+		result = prime * result + lineNumber;
+		result = prime * result + prefix;
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (! (obj instanceof PhoneNumber))
+		if (obj == null)
 			return false;
-		PhoneNumber pn = (PhoneNumber) obj;
-		return pn.areaCode == areaCode && pn.lineNumber == lineNumber && pn.prefix == prefix;
+		if (getClass() != obj.getClass())
+			return false;
+		PhoneNumber other = (PhoneNumber) obj;
+		if (areaCode != other.areaCode)
+			return false;
+		if (lineNumber != other.lineNumber)
+			return false;
+		if (prefix != other.prefix)
+			return false;
+		return true;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "PhoneNumber [areaCode=" + areaCode + ", prefix=" + prefix + ", lineNumber=" + lineNumber + "]";
+	}
+
 	public static void main(String[] args) {
 		PhoneNumber phoneNumber1 = new PhoneNumber(1, 91, 5555);
 		PhoneNumber phoneNumber2 = new PhoneNumber(1, 91, 5555);
 		System.out.println(phoneNumber1.equals(phoneNumber2));
+		
+		Set<PhoneNumber> phoneNumbers = new HashSet<PhoneNumber>();
+		phoneNumbers.add(phoneNumber1);
+		phoneNumbers.add(phoneNumber2);
+		
+		System.out.println(phoneNumbers);
 	}
 }

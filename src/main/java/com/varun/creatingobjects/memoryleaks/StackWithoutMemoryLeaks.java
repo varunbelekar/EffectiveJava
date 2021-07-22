@@ -3,6 +3,8 @@ package com.varun.creatingobjects.memoryleaks;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
+import com.varun.commonmethods.equals.PhoneNumber;
+
 public class StackWithoutMemoryLeaks implements Cloneable{
 	private Object[] elements;
 	private int size = 0;
@@ -41,6 +43,19 @@ public class StackWithoutMemoryLeaks implements Cloneable{
 		} catch (CloneNotSupportedException e) {
 			throw new AssertionError();
 		}
+	}
+	
+	public static void main(String[] args) {
+		StackWithoutMemoryLeaks phoneNumbers = new StackWithoutMemoryLeaks();
+		PhoneNumber phoneNumber = new PhoneNumber(1, 91, 788374);
+		
+		phoneNumbers.push(phoneNumber);
+		
+		StackWithoutMemoryLeaks phoneNumbersCopy = phoneNumbers.clone();
+		phoneNumbers.elements[0] = new PhoneNumber(2, 91, 788374);
+		System.out.println(phoneNumbers.pop());
+		
+		System.out.println(phoneNumbersCopy.pop());
 	}
 	
 	

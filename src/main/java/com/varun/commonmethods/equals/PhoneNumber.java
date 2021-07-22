@@ -56,6 +56,32 @@ public class PhoneNumber implements Cloneable{
 			throw new AssertionError();
 		}
 	}
+	
+	
+
+	public int getAreaCode() {
+		return areaCode;
+	}
+
+	public void setAreaCode(int areaCode) {
+		this.areaCode = areaCode;
+	}
+
+	public int getPrefix() {
+		return prefix;
+	}
+
+	public void setPrefix(int prefix) {
+		this.prefix = prefix;
+	}
+
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
+	}
 
 	public static void main(String[] args) {
 		PhoneNumber phoneNumber1 = new PhoneNumber(1, 91, 5555);

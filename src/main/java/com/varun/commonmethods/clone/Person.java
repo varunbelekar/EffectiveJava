@@ -1,15 +1,19 @@
 package com.varun.commonmethods.clone;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
 
-public class Person implements Cloneable{
+public class Person implements Cloneable, Comparable<Person>{
 	private Integer id;
 	private String firstName;
 	private String lastName;
 	private List<String> countriesVisited;
+	private static final Comparator<Person> PERSON_COMPARATOR = Comparator.comparing(Person::getId)
+																		  .thenComparing(Person::getFirstName)
+																		  .thenComparing(Person::getLastName);
 	
 	public Person(Integer id, String firstName, String lastName, List<String> countriesVisited) {
 		this.id = id;
@@ -67,5 +71,12 @@ public class Person implements Cloneable{
 			throw new AssertionError();
 		}
 	}
+
+	@Override
+	public int compareTo(Person person) {
+		return PERSON_COMPARATOR.compare(this, person);
+	}
+	
+	
 	
 }

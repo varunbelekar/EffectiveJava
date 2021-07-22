@@ -49,12 +49,11 @@ public class PhoneNumber implements Cloneable{
 	}
 	
 	@Override
-	protected PhoneNumber clone() {
+	public PhoneNumber clone() {
 		try {
 			return (PhoneNumber)super.clone();
 		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-			return null;
+			throw new AssertionError();
 		}
 	}
 

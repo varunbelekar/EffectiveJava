@@ -19,11 +19,11 @@ public class Shop {
 
     public double calculatePrice(String product){
         delay();
-        return new Random().nextDouble() * product.charAt(0) + product.charAt(1) ;
+        return new Random().nextDouble() * product.charAt(0) + product.charAt(100) ;
     }
 
     public Future<Double> getPriceAsync(String product) {
-        CompletableFuture<Double> futurePrice = new CompletableFuture<>();
+        /*CompletableFuture<Double> futurePrice = new CompletableFuture<>();
         new Thread(() -> {
             try {
                 futurePrice.complete(calculatePrice(product));
@@ -32,6 +32,7 @@ public class Shop {
             }
 
         }).start();
-        return futurePrice;
+        return futurePrice;*/
+        return CompletableFuture.supplyAsync(() -> calculatePrice(product));//Has the same effect as the above code;
     }
 }

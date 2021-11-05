@@ -7,7 +7,7 @@ import java.util.concurrent.Future;
 
 public class ShopClient {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Shop shop = new Shop();
+        Shop shop = new Shop("Demart");
         List<Double> productPrices = new ArrayList<>();
         long start = System.currentTimeMillis();
         String[] products = {"Milk", "Sugar", "Tea", "Fruits", "Beets", "Carrot", "Oil"};
